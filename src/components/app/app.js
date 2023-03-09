@@ -4,6 +4,7 @@ import './app.scss';
 
 import Message from '../message';
 import Input from '../input';
+import { useFakeConvo } from '../hooks';
 
 const initialMessages = [
     { id: 1, content: 'Hello there!', from: 'me' },
@@ -14,6 +15,8 @@ const initialMessages = [
 const App = () => {
     const [messages, setMessages] = useState(initialMessages);
     const [currentMessage, setCurrentMessage] = useState('');
+
+    useFakeConvo(setMessages);
 
     return (
         <div className='app-wrapper'>
