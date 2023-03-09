@@ -1,22 +1,22 @@
 import { useFakeMessage } from './index';
 
-const useFakeConvo = setMessages => {
-    useFakeMessage({ setMessages, message: 'That is cool!', timeout: 1000 });
+const useFakeConvo = dispatch => {
+    useFakeMessage({ dispatch, message: 'That is cool!', timeout: 1000 });
     useFakeMessage({
-        setMessages,
+        dispatch,
         message: 'I know right?',
         from: 'me',
         timeout: 3000,
     });
 
     useFakeMessage({
-        setMessages,
+        dispatch,
         message: 'So what should we do now....',
     });
 
     useFakeMessage({
-        setMessages,
-        message: 'I guess we should test scroll positioning',
+        dispatch,
+        message: 'I guess we should refactor useState to useReducer',
         from: 'me',
         timeout: 9000,
     });
