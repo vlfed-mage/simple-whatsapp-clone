@@ -1,4 +1,6 @@
 .app {
+    height: 100%;
+
     &-wrapper {
         display: flex;
         height: 100%;
@@ -8,7 +10,7 @@
 
     &-container {
         display: flex;
-        overflow: scroll;
+        overflow-y: scroll;
         height: max-content;
         flex-direction: column;
     }

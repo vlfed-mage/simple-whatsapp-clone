@@ -4,7 +4,7 @@ import './app.scss';
 
 import Message from '../message';
 import Input from '../input';
-import { useFakeConvo } from '../hooks';
+import { useFakeConvo, useScrollToBottom } from '../hooks';
 
 const initialMessages = [
     { id: 1, content: 'Hello there!', from: 'me' },
@@ -18,9 +18,11 @@ const App = () => {
 
     useFakeConvo(setMessages);
 
+    const scrollRef = useScrollToBottom(messages);
+
     return (
         <div className='app-wrapper'>
-            <div className='app-container'>
+            <div className='app-container' ref={ref => (scrollRef.current = ref)}>
                 {messages.map(({ id, ...message }) => (
                     <Message key={id} {...message} />
                 ))}
