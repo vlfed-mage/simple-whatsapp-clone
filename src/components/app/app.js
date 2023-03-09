@@ -4,15 +4,15 @@ import './app.scss';
 
 import Message from '../message';
 import Input from '../input';
-import { useFakeConvo, useScrollToBottom } from '../hooks';
-import useChatReducer from '../hooks/use-chat-reducer';
+import { useChat, useFakeConvo, useScrollToBottom } from '../hooks';
+import { ChatProvider } from '../chat-context';
 
 const App = () => {
-    const [state, dispatch] = useChatReducer();
+    const { state } = useChat();
 
-    useFakeConvo(dispatch);
+    useFakeConvo();
 
-    const scrollRef = useScrollToBottom(state.messages);
+    const scrollRef = useScrollToBottom();
 
     return (
         <div className='app-wrapper'>
@@ -21,13 +21,17 @@ const App = () => {
                     <Message key={id} {...message} />
                 ))}
             </div>
-            <Input
-                value={state.currentMessage}
-                onEnter={message => dispatch({ type: 'ADD_MESSAGE', message })}
-                onChange={message => dispatch({ type: 'SET_CURRENT_MESSAGE', message })}
-            />
+            <Input />
         </div>
     );
 };
 
-export default App;
+const AppContainer = () => {
+    return (
+        <ChatProvider>
+            <App />
+        </ChatProvider>
+    );
+};
+
+export default AppContainer;

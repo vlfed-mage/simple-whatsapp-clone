@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 
-const useFakeMessage = ({ dispatch, message, from = 'Test', timeout = 5000 }) => {
+import { useChat } from './index';
+
+const useFakeMessage = ({ message, from = 'Test', timeout = 5000 }) => {
+    const { dispatch } = useChat();
     useEffect(() => {
         setTimeout(() => {
             dispatch({ type: 'ADD_MESSAGE', message, from });
