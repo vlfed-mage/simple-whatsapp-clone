@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './app.scss';
 
-import Massage from '../massage';
+import Message from '../message';
 import Input from '../input';
 
 const initialMessages = [
@@ -12,26 +12,26 @@ const initialMessages = [
 ];
 
 const App = () => {
-    const [massages, setMassages] = useState(initialMessages);
-    const [currentMassage, setCurrentMassage] = useState('');
+    const [messages, setMessages] = useState(initialMessages);
+    const [currentMessage, setCurrentMessage] = useState('');
 
     return (
         <div className='app-wrapper'>
             <div className='app-container'>
-                {massages.map(({ id, ...massage }) => (
-                    <Massage key={id} {...massage} />
+                {messages.map(({ id, ...message }) => (
+                    <Message key={id} {...message} />
                 ))}
             </div>
             <Input
-                value={currentMassage}
+                value={currentMessage}
                 onEnter={content => {
-                    setCurrentMassage('');
-                    setMassages([
-                        ...massages,
-                        { id: massages.length + 1, content, from: 'me' },
+                    setCurrentMessage('');
+                    setMessages([
+                        ...messages,
+                        { id: messages.length + 1, content, from: 'me' },
                     ]);
                 }}
-                onChange={content => setCurrentMassage(content)}
+                onChange={content => setCurrentMessage(content)}
             />
         </div>
     );
