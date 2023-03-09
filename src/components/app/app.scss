@@ -1,0 +1,15 @@
+.app {
+    &-wrapper {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    &-container {
+        display: flex;
+        overflow: scroll;
+        height: max-content;
+        flex-direction: column;
+    }
+}
