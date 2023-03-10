@@ -7,7 +7,6 @@ const useScrollToBottom = () => {
 
     useEffect(() => {
         if (!scrollContainer?.current) return;
-        console.log('test');
 
         scrollContainer.current.scrollTo(0, scrollContainer.current.scrollHeight);
     }, [state.messages]);
