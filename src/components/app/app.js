@@ -2,10 +2,10 @@ import React from 'react';
 
 import './app.scss';
 
-import Message from '../message';
-import Input from '../input';
-import { useChat, useFakeConvo, useScrollToBottom } from '../hooks';
 import { ChatProvider } from '../chat-context';
+import { useChat, useFakeConvo, useScrollToBottom } from '../hooks';
+import ChatMessage from '../chat-message';
+import ChatInput from '../chat-input';
 
 const App = () => {
     const { state } = useChat();
@@ -18,10 +18,10 @@ const App = () => {
         <div className='app-wrapper'>
             <div className='app-container' ref={ref => (scrollRef.current = ref)}>
                 {state.messages.map(message => (
-                    <Message key={message.id} {...message} />
+                    <ChatMessage key={message.id} message={message} />
                 ))}
             </div>
-            <Input />
+            <ChatInput />
         </div>
     );
 };

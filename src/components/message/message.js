@@ -2,19 +2,14 @@ import React from 'react';
 
 import './message.scss';
 
-import { useChat } from '../hooks';
-
-const Message = ({ content, from, id }) => {
-    console.log(content, from, id);
-    const { state, dispatch } = useChat();
+const Message = ({ message, isHighlighted, onQuoteClicked }) => {
+    const { from, content } = message;
     const classNames = from === 'me' ? 'message sent' : 'message';
 
     return (
         <div className={classNames}>
-            <div className={id === state.highlightedMessageId ? 'highlighted' : null}>
-                {content}
-            </div>
-            <span onClick={() => dispatch({ type: 'QUOTE_MESSAGE', id })}>Quote</span>
+            <div className={isHighlighted ? 'highlighted' : null}>{content}</div>
+            {onQuoteClicked ? <span onClick={onQuoteClicked}>Quote</span> : null}
         </div>
     );
 };
