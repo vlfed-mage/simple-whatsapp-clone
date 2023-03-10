@@ -1,4 +1,5 @@
 .message {
+    display: flex;
     background-color: black;
     border-radius: 8px;
     padding: 12px;
@@ -8,5 +9,14 @@
 
     &.sent {
         align-self: flex-end;
+    }
+
+    span {
+        margin: 0 0 0 auto;
+        cursor: pointer;
+    }
+
+    .highlighted {
+        color: aquamarine;
     }
 }

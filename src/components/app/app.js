@@ -17,8 +17,8 @@ const App = () => {
     return (
         <div className='app-wrapper'>
             <div className='app-container' ref={ref => (scrollRef.current = ref)}>
-                {state.messages.map(({ id, ...message }) => (
-                    <Message key={id} {...message} />
+                {state.messages.map(message => (
+                    <Message key={message.id} {...message} />
                 ))}
             </div>
             <Input />
